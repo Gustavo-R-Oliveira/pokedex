@@ -1,0 +1,32 @@
+<div class="select">
+  <div class="input">
+    <input
+      type="text"
+      placeholder="Name or pokemon number"
+      [(ngModel)]="value"
+    />
+    <button
+      (click)="open = !open"
+      [ngClass]="{
+      'btn-open': open,
+      'btn-close': !open,
+    }"
+    >
+      &#11167;
+    </button>
+  </div>
+
+  <ul
+    [ngClass]="{
+    'list-open': open,
+    'list-close': !open,
+  }"
+  >
+    <li *ngFor="let pokemon of pokemons">
+      <div class="img"><img [src]="pokemon.gif" /></div>
+      <div class="name">
+        <span>#{{ pokemon.id }} | {{ pokemon.name }}</span>
+      </div>
+    </li>
+  </ul>
+</div>

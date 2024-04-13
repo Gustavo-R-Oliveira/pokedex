@@ -1,0 +1,147 @@
+.select {
+  display: flex;
+  height: 40px;
+  min-width: 285px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: var(--shadow-4);
+
+  input,
+  button {
+    height: 100%;
+    border: none;
+    background-color: transparent;
+  }
+
+  input {
+    width: 245px;
+    vertical-align: middle;
+    padding: 0 8px;
+    font-family: "Poppins", sans-serif;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    width: 40px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #8a8a8a;
+  }
+}
+.select {
+  margin-bottom: 1rem;
+}
+
+ul {
+  position: absolute;
+  width: 335px;
+  top: 50px;
+  left: -20px;
+
+  z-index: 1;
+  height: 660px;
+  overflow-y: auto;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: var(--shadow-4);
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #8a8a8a;
+    border-radius: 1rem;
+  }
+
+  li {
+    height: 60px;
+    display: flex;
+    margin: 8px 8px;
+    list-style: none;
+    border-radius: 5px;
+    align-items: center;
+    box-shadow: var(--shadow-1);
+
+    justify-content: space-between;
+    padding: 0 8px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid gainsboro;
+    }
+
+    div.img {
+      width: 70%;
+      img {
+        height: 50px;
+      }
+    }
+    div.name {
+      width: 100%;
+      span {
+        text-transform: capitalize;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.btn-open {
+  animation: 0.2s on-btn-open ease-in-out;
+  transform: rotate(0);
+}
+
+.btn-close {
+  animation: 0.2s on-btn-close ease-in-out;
+  transform: rotate(180deg);
+}
+
+.list-open {
+  animation: 0.2s on-list-open ease-in-out;
+}
+.list-close {
+  display: none;
+}
+
+@keyframes on-btn-open {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes on-btn-close {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes on-list-open {
+  0% {
+    height: 0;
+    display: block;
+  }
+  100% {
+    height: 600px;
+  }
+}
+
+@media (max-width: 375px) {
+  ul {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

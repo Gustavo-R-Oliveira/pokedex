@@ -1,0 +1,9 @@
+<img
+  (click)="clicked.emit(direction)"
+  src="assets/icons/arrow.png"
+  class="arrow"
+  [ngClass]="{
+  left: direction === 'left',
+  right: direction === 'right',
+}"
+/>

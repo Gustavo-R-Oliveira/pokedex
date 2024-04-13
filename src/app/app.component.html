@@ -1,0 +1,22 @@
+<div class="corpo">
+  <header class="flex-center-center blur"><div>Pokedex</div></header>
+
+  <main class="flex-center-center">
+    <app-select
+      [pokemons]="getPokemons"
+      (typed)="selectValue = $event"
+    ></app-select>
+
+    <pokemon-card
+      (next)="nextPokemon()"
+      (previous)="previousPokemon()"
+      [pokemon]="pokemon"
+    ></pokemon-card>
+  </main>
+
+  <footer class="flex-center-center blur">
+    <a href="https://www.vecteezy.com/free-photos/anime-forest"
+      >Background by Vecteezy</a
+    >
+  </footer>
+</div>
