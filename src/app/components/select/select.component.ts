@@ -26,12 +26,20 @@ export class SelectComponent implements AfterViewInit, OnDestroy {
   public valueSelect = '1';
   public open = false;
   private subcription = new Subscription();
+  isMobile = this.detectTouchDevice();
+
 
   ngAfterViewInit(): void {
     if (this.filter === false) return
     this.subcription = fromEvent(document, 'input')
       .pipe(debounceTime(1000))
       .subscribe(() => this.pokemonFiltered.emit(this.valueFilter));
+  }
+
+  detectTouchDevice(): boolean {
+    if ('ontouchstart' in window) return true;
+
+    return false;
   }
 
   changeGeneration(): void {

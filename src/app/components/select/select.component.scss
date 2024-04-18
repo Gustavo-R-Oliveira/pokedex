@@ -163,6 +163,10 @@ ul {
   align-items: center;
 }
 
+.mobile {
+  height: 510px;
+}
+
 @keyframes on-btn-open {
   0% {
     transform: rotate(90deg);
