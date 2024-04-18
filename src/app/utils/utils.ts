@@ -1,5 +1,3 @@
-import { IPokemon } from '../interfaces/pokemon.interface';
-
 export const Utils = {
   mapPokemon(pokemon: any): any {
     const mapType = (typeArray: any) => {
@@ -40,7 +38,7 @@ export const Utils = {
 
     return {
       name: pokemon.name,
-      id: `${pokemon.id}`.padStart(3, '0'),
+      id: `${pokemon.id}`,
       img: pokemon.sprites.other['official-artwork'].front_default,
       gif: pokemon.sprites.other['showdown'].front_default,
       types: pokemon.types.map(mapType),

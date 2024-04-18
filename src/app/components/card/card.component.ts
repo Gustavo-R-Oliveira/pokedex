@@ -1,11 +1,10 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   EventEmitter,
   Input,
+  OnInit,
   Output,
-  ViewChild,
 } from '@angular/core';
 import { IPokemon } from 'src/app/interfaces/pokemon.interface';
 
@@ -14,13 +13,16 @@ import { IPokemon } from 'src/app/interfaces/pokemon.interface';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements AfterViewInit {
+export class CardComponent implements OnInit{
   @Input() pokemon!: IPokemon;
   @Output() next = new EventEmitter();
   @Output() previous = new EventEmitter();
-  @ViewChild('card', { read: ElementRef }) card!: ElementRef;
 
-  ngAfterViewInit(): void {
-    console.log(this.card);
+  firstTime = true;
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.firstTime = false;
+    }, 1500);
   }
 }

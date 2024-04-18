@@ -1,22 +1,24 @@
 <div class="corpo">
-  <header class="flex-center-center blur"><div>Pokedex</div></header>
-
+  <app-header></app-header>
   <main class="flex-center-center">
     <app-select
+      [filter]="true"
       [pokemons]="getPokemons"
-      (typed)="selectValue = $event"
+      placeholder="Name or pokemon number"
+      (pokemonFiltered)="selectValue = $event"
+      (pokemonSelected)="getPokemon($event)"
+      (genChanged)="getAllPokemons($event)"
     ></app-select>
 
-    <pokemon-card
-      (next)="nextPokemon()"
-      (previous)="previousPokemon()"
+    <pokemon-card [ngClass]="{
+      'flip-next':  +previousPokemon < +pokemon.id,
+      'flip-previous':  +previousPokemon > +pokemon.id
+    }"
+      (next)="getPokemon($event)"
+      (previous)="getPokemon($event)"
       [pokemon]="pokemon"
     ></pokemon-card>
   </main>
 
-  <footer class="flex-center-center blur">
-    <a href="https://www.vecteezy.com/free-photos/anime-forest"
-      >Background by Vecteezy</a
-    >
-  </footer>
+  <app-footer></app-footer>
 </div>

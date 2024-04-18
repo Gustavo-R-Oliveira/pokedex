@@ -16,16 +16,31 @@ import { Subscription, debounceTime, fromEvent } from 'rxjs';
 })
 export class SelectComponent implements AfterViewInit, OnDestroy {
   @Input() pokemons: IPokemon[] = [];
-  @Output() typed = new EventEmitter<string>();
+  @Input() placeholder = '';
+  @Input() filter = false;
+  @Output() pokemonFiltered = new EventEmitter<string>();
+  @Output() genChanged = new EventEmitter<string>();
+  @Output() pokemonSelected = new EventEmitter<string>();
 
-  public value = '';
+  public valueFilter = '';
+  public valueSelect = '1';
   public open = false;
   private subcription = new Subscription();
 
   ngAfterViewInit(): void {
+    if (this.filter === false) return
     this.subcription = fromEvent(document, 'input')
       .pipe(debounceTime(1000))
-      .subscribe(() => this.typed.emit(this.value));
+      .subscribe(() => this.pokemonFiltered.emit(this.valueFilter));
+  }
+
+  changeGeneration(): void {
+    this.genChanged.emit(this.valueSelect)
+  }
+
+  selectPokemon(id: string): void {
+    this.open = false
+    this.pokemonSelected.emit(id)
   }
 
   ngOnDestroy(): void {

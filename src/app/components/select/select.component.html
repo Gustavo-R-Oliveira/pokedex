@@ -1,32 +1,53 @@
-<div class="select">
-  <div class="input">
-    <input
-      type="text"
-      placeholder="Name or pokemon number"
-      [(ngModel)]="value"
-    />
-    <button
-      (click)="open = !open"
-      [ngClass]="{
-      'btn-open': open,
-      'btn-close': !open,
+<div class="container">
+  <div class="select">
+    <div class="input">
+      <input type="text" [placeholder]="placeholder" [(ngModel)]="valueFilter" />
+      <button
+        (click)="open = !open"
+        [ngClass]="{
+        'btn-open': open,
+        'btn-close': !open,
+      }"
+      >
+        &#11167;
+      </button>
+    </div>
+  
+    <ul
+    [ngClass]="{
+      'list-open': open,
+      'list-close': !open,
     }"
     >
-      &#11167;
-    </button>
-  </div>
-
-  <ul
-    [ngClass]="{
-    'list-open': open,
-    'list-close': !open,
-  }"
-  >
-    <li *ngFor="let pokemon of pokemons">
-      <div class="img"><img [src]="pokemon.gif" /></div>
+    
+    <div *ngIf="pokemons.length else spinner">
+    <li *ngFor="let pokemon of pokemons" (click)="selectPokemon(pokemon.name)">
+      <div class="img"><img [src]="pokemon.gif || pokemon.img" /></div>
       <div class="name">
         <span>#{{ pokemon.id }} | {{ pokemon.name }}</span>
       </div>
     </li>
+  </div>
+  
+  <ng-template #spinner>
+    <div class="spinner">
+      <app-spinner></app-spinner>
+    </div>
+  </ng-template>
+
   </ul>
+  </div>
+  
+  <select class="version" (change)="changeGeneration()" [(ngModel)]="valueSelect">
+    <option value="1">Gen. 1</option>
+    <option value="2">Gen. 2</option>
+    <option value="3">Gen. 3</option>
+    <option value="4">Gen. 4</option>
+    <option value="5">Gen. 5</option>
+    <option value="6">Gen. 6</option>
+    <option value="7">Gen. 7</option>
+    <option value="8">Gen. 8</option>
+    <option value="9">Gen. 9</option>
+    <option value="variations">Variations</option>
+  </select>
 </div>
