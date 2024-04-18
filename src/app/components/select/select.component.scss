@@ -46,6 +46,9 @@
     cursor: pointer;
     font-size: 1.1rem;
     color: #8a8a8a;
+    img {
+      width: 16px;
+    }
   }
 }
 
@@ -138,12 +141,12 @@ ul {
 
 .btn-open {
   animation: 0.2s on-btn-open ease-in-out;
-  transform: rotate(0);
+  transform: rotate(270deg);
 }
 
 .btn-close {
   animation: 0.2s on-btn-close ease-in-out;
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .list-open {
@@ -162,19 +165,19 @@ ul {
 
 @keyframes on-btn-open {
   0% {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
   }
   100% {
-    transform: rotate(0);
+    transform: rotate(270deg);
   }
 }
 
 @keyframes on-btn-close {
   0% {
-    transform: rotate(0);
+    transform: rotate(270deg);
   }
   100% {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
   }
 }
 
