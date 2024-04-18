@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   this.getAllPokemons()
   this.getPokemon()
-   
   }
 
   getPokemon(pokemon = 'bulbasaur'): void {
@@ -50,4 +49,6 @@ export class AppComponent implements OnInit {
       return this.pokemons.filter((pokemon) => pokemon.name.includes(param));
     }
   }
+
+
 }

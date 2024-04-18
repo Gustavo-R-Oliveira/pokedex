@@ -19,10 +19,17 @@ export class CardComponent implements OnInit{
   @Output() previous = new EventEmitter();
 
   firstTime = true;
+  isMobile = this.detectTouchDevice();
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.firstTime = false;
+      this.firstTime = true;
     }, 1500);
+  }
+
+  detectTouchDevice(): boolean {
+    if ('ontouchstart' in window) return true;
+
+    return false;
   }
 }

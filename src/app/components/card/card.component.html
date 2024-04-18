@@ -4,6 +4,7 @@
     (swipeleft)="next.emit(+pokemon.id + 1)"
     (swiperight)="previous.emit(+pokemon.id - 1)"
     class="pokemon-container"
+    [ngClass]="{mobile: !isMobile}"
     [style.background-color]="'var(--' + pokemon.types[0] + ')'"
   >
 
