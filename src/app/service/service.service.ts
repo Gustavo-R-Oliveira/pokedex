@@ -8,7 +8,7 @@ import { IResponse } from '../interfaces/getAllPokemons.interface';
   providedIn: 'root',
 })
 export class PokemonService {
-  private baseUrl = 'http://pokeapi.co/api/v2';
+  private baseUrl = 'https://pokeapi.co/api/v2';
   constructor(private http: HttpClient) {}
 
   getAllPokemons(generation: string): Promise<any> {

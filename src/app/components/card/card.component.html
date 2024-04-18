@@ -1,5 +1,5 @@
 <div class="container" >
-  <img src="/assets/icons/swipe.png" class="swipe-icon" *ngIf="firstTime">
+  <img src="assets/icons/swipe.png" class="swipe-icon" *ngIf="firstTime">
   <div
     (swipeleft)="next.emit(+pokemon.id + 1)"
     (swiperight)="previous.emit(+pokemon.id - 1)"
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <img class="pokeball" src="/assets/imgs/pokeball.png" />
+    <img class="pokeball" src="assets/imgs/pokeball.png" />
     <img class="pokemon-img" [src]="pokemon.img" />
     <div class="pokemon-info">
       <div class="types-group">
