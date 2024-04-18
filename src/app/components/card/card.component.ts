@@ -23,7 +23,7 @@ export class CardComponent implements OnInit{
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.firstTime = true;
+      this.firstTime = false;
     }, 1500);
   }
 
